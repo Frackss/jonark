@@ -8,6 +8,26 @@
   <link rel="stylesheet" href="themes.css">
   <link rel="stylesheet" href="style.css">
   <style>
+
+    /* ── gallery ── */
+    .gallery { display: flex; flex-direction: column; gap: 0.6rem; height: 100%; }
+    .gallery-main { flex: 1; min-height: 0; overflow: hidden; }
+    .gallery-active-img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: opacity 0.2s ease;
+    }
+    .gallery-active-img.fade { opacity: 0; }
+    .gallery-thumbs { display: flex; gap: 0.5rem; }
+    .thumb {
+      flex: 1; padding: 0; border: 2px solid transparent;
+      background: none; cursor: pointer;
+      transition: border-color 0.15s;
+      overflow: hidden;
+    }
+    .thumb img { width: 100%; height: 70px; object-fit: cover; display: block; }
+    .thumb.active { border-color: var(--color-border-default); }
+    .thumb:hover { border-color: var(--color-border-subtle); }
+
     /* ── reviews section ── */
     .reviews-section {
       border-top: 1px solid var(--color-border-default);
@@ -175,7 +195,22 @@
   <main>
     <div class="shop-layout">
       <div class="shop-col-image">
-        <img src="images/vessel.jpg" alt="the vessel — leather journal">
+        <div class="gallery">
+          <div class="gallery-main">
+            <img src="images/vessel.jpg" alt="the vessel — leather journal" id="gallery-active" class="gallery-active-img">
+          </div>
+          <div class="gallery-thumbs">
+            <button class="thumb active" onclick="switchImage(this, 'images/vessel.jpg', 'the vessel — tan leather')">
+              <img src="images/vessel.jpg" alt="tan">
+            </button>
+            <button class="thumb" onclick="switchImage(this, 'images/vessel-black.jpg', 'the vessel — black leather')">
+              <img src="images/vessel-black.jpg" alt="black">
+            </button>
+            <button class="thumb" onclick="switchImage(this, 'images/vessel-dark.jpg', 'the vessel — dark leather with monogram')">
+              <img src="images/vessel-dark.jpg" alt="dark with monogram">
+            </button>
+          </div>
+        </div>
       </div>
       <div class="shop-col-text">
         <img src="images/the-vessel.png" alt="the vessel" class="product-heading-img">
@@ -273,5 +308,18 @@
     <span class="footer-right">@&nbsp;&nbsp;socials coming soon</span>
   </footer>
   <script src="clock.js"></script>
+  <script>
+    function switchImage(thumb, src, alt) {
+      var img = document.getElementById('gallery-active');
+      img.classList.add('fade');
+      setTimeout(function() {
+        img.src = src;
+        img.alt = alt;
+        img.classList.remove('fade');
+      }, 200);
+      document.querySelectorAll('.thumb').forEach(function(t) { t.classList.remove('active'); });
+      thumb.classList.add('active');
+    }
+  </script>
 </body>
 </html>
