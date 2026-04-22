@@ -177,3 +177,27 @@ footer { color: var(--color-text-secondary); }
   :root:not([data-theme]) .theme-toggle .icon-moon { display: none; }
   :root:not([data-theme]) .theme-toggle .icon-sun  { display: block; }
 }
+
+/* LOGO INVERT FOR DARK MODE */
+[data-theme="dark"] .logo {
+  filter: invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .logo {
+    filter: invert(1);
+  }
+}
+
+/* INVERT TEXT-IMAGE ASSETS IN DARK MODE */
+[data-theme="dark"] .section-heading-img,
+[data-theme="dark"] .product-heading-img {
+  filter: invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .section-heading-img,
+  :root:not([data-theme]) .product-heading-img {
+    filter: invert(1);
+  }
+}

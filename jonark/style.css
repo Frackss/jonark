@@ -8,11 +8,6 @@
 
 :root {
   --font-main: 'Space Mono', monospace;
-  --color-text: rgba(0, 0, 0, 0.85);
-  --color-text-light: rgba(0, 0, 0, 0.75);
-  --color-text-muted: rgba(0, 0, 0, 0.6);
-  --color-border: rgba(0, 0, 0, 0.75);
-  --color-accent: rgba(255, 102, 0, 0.85);
   --page-padding: 1.5rem;
   --max-width: 1100px;
 }
@@ -21,8 +16,8 @@ html { font-size: 15.5px; }
 
 body {
   font-family: var(--font-main);
-  color: var(--color-text);
-  background: #fff;
+  color: var(--color-text-primary);
+  background: var(--color-surface-base);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,7 +27,7 @@ body {
 .site-header {
   position: sticky;
   top: 0;
-  background: #fff;
+  background: var(--color-surface-base);
   z-index: 100;
 }
 
@@ -53,7 +48,7 @@ nav { display: flex; gap: 1.5rem; align-items: center; }
 
 nav a {
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--color-text-primary);
   font-size: 1rem;
   font-family: var(--font-main);
 }
@@ -62,7 +57,7 @@ nav a:hover { opacity: 0.6; }
 hr {
   border: none;
   height: 1px;
-  background: var(--color-border);
+  background: var(--color-border-default);
   margin: 0 var(--page-padding);
 }
 
@@ -95,7 +90,7 @@ main {
 }
 
 .section-heading-img { height: 28px; width: auto; display: block; align-self: flex-start; }
-.col-text p { font-size: 1rem; line-height: 1.55; color: var(--color-text); }
+.col-text p { font-size: 1rem; line-height: 1.55; color: var(--color-text-primary); }
 
 /* BUTTON */
 .btn {
@@ -103,15 +98,21 @@ main {
   text-decoration: none;
   font-family: var(--font-main);
   font-size: 1rem;
-  color: var(--color-text);
-  border: 2px solid var(--color-text);
+  color: var(--color-interactive-fg);
+  background: var(--color-interactive-bg);
+  border: 2px solid var(--color-interactive-bg);
   border-radius: 5px;
   padding: 0.55rem 0.8rem;
   margin-top: 0.5rem;
-  transition: opacity 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
   align-self: flex-start;
 }
-.btn:hover { opacity: 0.6; }
+.btn:hover {
+  background: var(--color-interactive-hover-bg);
+  color: var(--color-interactive-hover-fg);
+  border-color: var(--color-interactive-hover-bg);
+  opacity: 1;
+}
 
 /* SHOP */
 .shop-layout {
@@ -138,8 +139,8 @@ main {
 }
 
 .product-heading-img { height: 60px; width: auto; display: block; margin-bottom: 0.2rem; align-self: flex-start; }
-.shop-col-text .subtitle { font-style: italic; font-weight: 700; font-size: 1rem; color: var(--color-text); }
-.shop-col-text p { font-size: 1rem; line-height: 1.55; }
+.shop-col-text .subtitle { font-style: italic; font-weight: 700; font-size: 1rem; color: var(--color-text-primary); }
+.shop-col-text p { font-size: 1rem; line-height: 1.55; color: var(--color-text-primary); }
 .shop-col-text p.italic { font-style: italic; }
 .highlight { font-style: italic; font-weight: 700; }
 
@@ -150,11 +151,11 @@ main {
 .marquee-wrapper {
   overflow: hidden;
   margin-top: 0.8rem;
-  color: var(--color-accent);
+  color: var(--color-accent-default);
   font-style: italic;
   white-space: nowrap;
-  border-top: 1px solid rgba(0,0,0,0.1);
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
   padding: 0.3rem 0;
 }
 
@@ -167,8 +168,6 @@ main {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
-.custom-order { margin-top: 0.6rem; font-size: 1rem; font-style: italic; color: var(--color-text-muted); }
 
 /* ABOUT */
 .about-layout {
@@ -183,7 +182,7 @@ main {
 .about-col-image img { width: 100%; height: auto; display: block; }
 
 .about-col-text { display: flex; flex-direction: column; gap: 1.2rem; padding-top: 0.5rem; }
-.about-col-text p { font-size: 1rem; line-height: 1.6; color: var(--color-text); }
+.about-col-text p { font-size: 1rem; line-height: 1.6; color: var(--color-text-primary); }
 .about-col-text strong { font-weight: 700; }
 
 /* FOOTER */
@@ -196,7 +195,8 @@ footer {
   max-width: var(--max-width);
   width: 100%;
   font-size: 0.62rem;
-  color: var(--color-text-light);
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-border-subtle);
 }
 
 footer .footer-center { text-align: center; }
