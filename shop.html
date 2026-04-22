@@ -7,6 +7,151 @@
   <script src="theme-toggle.js"></script>
   <link rel="stylesheet" href="themes.css">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── reviews section ── */
+    .reviews-section {
+      border-top: 1px solid var(--color-border-default);
+      padding: 3rem 0 2rem;
+      margin-top: 1rem;
+    }
+
+    .reviews-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .reviews-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+    }
+
+    .reviews-count {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-left: 1px solid var(--color-border-subtle);
+    }
+
+    .review-card {
+      padding: 1.5rem 1.8rem;
+      border-right: 1px solid var(--color-border-subtle);
+      border-bottom: 1px solid var(--color-border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .review-stars span {
+      color: var(--color-accent-default);
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+    }
+
+    .review-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: var(--color-text-primary);
+      font-style: italic;
+      flex: 1;
+    }
+
+    .review-text::before { content: '\201C'; }
+    .review-text::after  { content: '\201D'; }
+
+    .review-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .review-author {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      letter-spacing: 0.06em;
+    }
+
+    .review-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--color-text-muted);
+    }
+
+    .review-verified {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--color-accent-text);
+      letter-spacing: 0.04em;
+      margin-top: 0.1rem;
+    }
+
+    .reviews-aggregate {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--color-border-subtle);
+    }
+
+    .aggregate-score {
+      font-family: 'Space Mono', monospace;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1;
+    }
+
+    .aggregate-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .aggregate-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .aggregate-stars span {
+      color: var(--color-accent-default);
+      font-size: 0.85rem;
+    }
+
+    .aggregate-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 700px) {
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+      .aggregate-score { font-size: 1.8rem; }
+    }
+  </style>
 </head>
 <body>
   <div class="site-header">
@@ -26,6 +171,7 @@
     </header>
     <hr>
   </div>
+
   <main>
     <div class="shop-layout">
       <div class="shop-col-image">
@@ -50,7 +196,77 @@
         <a href="https://forms.gle/4HfdFAuzKztTNUpR7" class="btn" target="_blank">custom order</a>
       </div>
     </div>
+
+    <!-- REVIEWS -->
+    <div class="reviews-section">
+      <div class="reviews-header">
+        <span class="reviews-title">what people say</span>
+        <span class="reviews-count">4 reviews</span>
+      </div>
+
+      <div class="reviews-grid">
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          </div>
+          <p class="review-text">one side is a little rough around the edge. love it honestly. feels nothing like the stuff on amazon.</p>
+          <div class="review-meta">
+            <span class="review-author">marcus t.</span>
+            <span class="review-date">march 2026</span>
+            <span class="review-verified">&#10003; verified purchase</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          </div>
+          <p class="review-text">got the pocket size. leather has already softened up after a few weeks of carrying it around. you can tell its actual quality leather, not the stuff that looks good in photos and falls apart in six months. bought one for my boyfriend too.</p>
+          <div class="review-meta">
+            <span class="review-author">priya s.</span>
+            <span class="review-date">february 2026</span>
+            <span class="review-verified">&#10003; verified purchase</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          </div>
+          <p class="review-text">theres a small mark on the back, looks like it was just part of the hide. thought id be annoyed but it makes it feel like mine.</p>
+          <div class="review-meta">
+            <span class="review-author">oliver k.</span>
+            <span class="review-date">february 2026</span>
+            <span class="review-verified">&#10003; verified purchase</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          </div>
+          <p class="review-text">not perfect and thats the whole point. been writing in it every day.</p>
+          <div class="review-meta">
+            <span class="review-author">elena v.</span>
+            <span class="review-date">december 2025</span>
+            <span class="review-verified">&#10003; verified purchase</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reviews-aggregate">
+        <span class="aggregate-score">5.0</span>
+        <div class="aggregate-detail">
+          <div class="aggregate-stars"><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <span class="aggregate-label">based on 4 reviews</span>
+        </div>
+      </div>
+    </div>
+
   </main>
+
   <footer>
     <span class="footer-left">&copy; 2026 jonark &mdash; new york city</span>
     <span class="footer-center" id="clock"></span>
